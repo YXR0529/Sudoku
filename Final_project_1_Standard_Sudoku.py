@@ -4,6 +4,7 @@
 
 class standard_sudoku():
 
+
     def read_sdk(self, filename):
         '''
     This is a function used to read the sudoku file as a dictionary.
@@ -80,3 +81,4 @@ if __name__ == "__main__":
     a = standard_sudoku()
     b = a.read_sdk("standard_hard_8_0.sdk")
     print(b)
+

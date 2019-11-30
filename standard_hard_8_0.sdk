@@ -1,0 +1,30 @@
+TYPE: STANDARD_SUDOKU
+
+NUMBER_START
+
+502090100
+000100080
+300006002
+040000700
+600000001
+005000090
+900700004
+060003000
+007020503
+NUMBER_END
+
+MAP_START
+
+a a a b b b c c c
+a a a b b b c c c
+a a a b b b c c c
+d d d e e e f f f
+d d d e e e f f f
+d d d e e e f f f
+g g g h h h i i i
+g g g h h h i i i
+g g g h h h i i i
+
+MAP_END
+
+

@@ -1,6 +1,5 @@
 '''
 '''
-import numpy as np
 import functools
 
 
@@ -93,7 +92,7 @@ class standard_sudoku():
                 info_dict['possibility'].pop(fp)
             fp_x, fp_y = fp[0], fp[1]
             # Sub Row Possibilities
-            test_x = 8
+            test_x = len(info_dict['map'][0])
             while test_x >= 0:
                 if (test_x, fp_y) in info_dict['possibility']:
                     if info_dict['fixed_number'][fp] in\
@@ -102,7 +101,7 @@ class standard_sudoku():
                             info_dict['fixed_number'][fp])
                 test_x -= 1
             # Sub Column Possibilities
-            test_y = 8
+            test_y = len(info_dict['map'])
             while test_y >= 0:
                 if (fp_x, test_y) in info_dict['possibility']:
                     if info_dict['fixed_number'][fp] in\
@@ -160,8 +159,10 @@ class standard_sudoku():
         while info_dict['possibility'] != {}:
             next_list = standard_sudoku.next_number(self, info_dict, next_list)
             # print(next_list)
-            print(len(next_list))
-        return next_list
+            # print(len(next_list))
+        info_dict['final'] = {}
+        info_dict['final'].update(next_list[0])
+        return info_dict
 
     def show_solution(self):
         pass
@@ -169,8 +170,9 @@ class standard_sudoku():
 
 if __name__ == "__main__":
     a = standard_sudoku()
-    b = a.read_sdk("standard_hard_8_0.sdk")
+    b = a.read_sdk("standard_master_100_0.sdk")
     c = a.load_sdk_map(b)
+    print(c)
     d = a.sub_points(c)
     e = a.solve_sdk(c)
     print(e)

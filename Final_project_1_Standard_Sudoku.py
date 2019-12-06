@@ -242,6 +242,5 @@ if __name__ == "__main__":
     print(c)
     d = a.sub_points(c)
     e = a.solve_sdk(c)
-    print(e)
     a.save_sdk_txt(e, "standart_hard_8_0.txt")
     a.save_sdk_img(e, "standart_hard_8_0.png")

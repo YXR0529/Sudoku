@@ -1,0 +1,54 @@
+TYPE: MULTI_SUDOKU
+
+NUMBER_START
+
+100003000000000500006
+008706000000000602700
+020450000000000041050
+084302091000470103890
+009000300000009000100
+560109280000081704023
+000071000000000950000
+000804000700000207000
+000600000060000006000
+000000000006000000000
+000000467080351000000
+000000000300000000000
+000900000010000007000
+000401000007000908000
+000083000000000410000
+710509620000045102097
+006000500000008000100
+029806047000190504260
+040690000000000059080
+008204000000000806500
+300005000000000300004
+NUMBER_END
+
+MAP_START
+
+a1 a1 a1 a2 a2 a2 a3 a3 a3 oo oo oo b1 b1 b1 b2 b2 b2 b3 b3 b3
+a1 a1 a1 a2 a2 a2 a3 a3 a3 oo oo oo b1 b1 b1 b2 b2 b2 b3 b3 b3
+a1 a1 a1 a2 a2 a2 a3 a3 a3 oo oo oo b1 b1 b1 b2 b2 b2 b3 b3 b3
+a4 a4 a4 a5 a5 a5 a6 a6 a6 oo oo oo b4 b4 b4 b5 b5 b5 b6 b6 b6
+a4 a4 a4 a5 a5 a5 a6 a6 a6 oo oo oo b4 b4 b4 b5 b5 b5 b6 b6 b6
+a4 a4 a4 a5 a5 a5 a6 a6 a6 oo oo oo b4 b4 b4 b5 b5 b5 b6 b6 b6
+a7 a7 a7 a8 a8 a8 ac ac ac c1 c1 c1 bc bc bc b7 b7 b7 b8 b8 b8
+a7 a7 a7 a8 a8 a8 ac ac ac c1 c1 c1 bc bc bc b7 b7 b7 b8 b8 b8
+a7 a7 a7 a8 a8 a8 ac ac ac c1 c1 c1 bc bc bc b7 b7 b7 b8 b8 b8
+oo oo oo oo oo oo c2 c2 c2 c3 c3 c3 c4 c4 c4 oo oo oo oo oo oo
+oo oo oo oo oo oo c2 c2 c2 c3 c3 c3 c4 c4 c4 oo oo oo oo oo oo
+oo oo oo oo oo oo c2 c2 c2 c3 c3 c3 c4 c4 c4 oo oo oo oo oo oo
+d1 d1 d1 d2 d2 d2 cd cd cd c5 c5 c5 ce ce ce e1 e1 e1 e2 e2 e2
+d1 d1 d1 d2 d2 d2 cd cd cd c5 c5 c5 ce ce ce e1 e1 e1 e2 e2 e2
+d1 d1 d1 d2 d2 d2 cd cd cd c5 c5 c5 ce ce ce e1 e1 e1 e2 e2 e2
+d3 d3 d3 d4 d4 d4 d5 d5 d5 oo oo oo e3 e3 e3 e4 e4 e4 e5 e5 e5
+d3 d3 d3 d4 d4 d4 d5 d5 d5 oo oo oo e3 e3 e3 e4 e4 e4 e5 e5 e5
+d3 d3 d3 d4 d4 d4 d5 d5 d5 oo oo oo e3 e3 e3 e4 e4 e4 e5 e5 e5
+d6 d6 d6 d7 d7 d7 d8 d8 d8 oo oo oo e6 e6 e6 e7 e7 e7 e8 e8 e8
+d6 d6 d6 d7 d7 d7 d8 d8 d8 oo oo oo e6 e6 e6 e7 e7 e7 e8 e8 e8
+d6 d6 d6 d7 d7 d7 d8 d8 d8 oo oo oo e6 e6 e6 e7 e7 e7 e8 e8 e8
+
+MAP_END
+
+

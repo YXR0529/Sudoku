@@ -5,7 +5,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 
-class standard_sudoku():
+class diagonal_sudoku():
     def read_sdk(self, filename):
         '''
         This is a function used to read the sudoku file as a dictionary.
@@ -55,6 +55,7 @@ class standard_sudoku():
                     if y != " ":
                         lst.append(y)
                 map.append(lst)
+        # append different groups to the dictionary.
         file['groups'] = {}
         for y, row in enumerate(map):
             for x, z in enumerate(row):
@@ -64,6 +65,7 @@ class standard_sudoku():
         for y, row in enumerate(map):
             for x, z in enumerate(row):
                 file['groups'][z].append((x, y))
+                # Put all the points on each diagonal in the same group.
                 if x == y:
                     file['groups']['diagonal1'].append((x, y))
                 if x + y == len(map) - 1:
@@ -74,6 +76,7 @@ class standard_sudoku():
 
     def load_sdk_map(self, info_dict):
         '''
+        same as standard.
         '''
         # Initialize all blank positions on the map
         info_dict['original_numbers'] = {}
@@ -136,13 +139,13 @@ class standard_sudoku():
     def next_number(self, info_dict, next_list):
         '''
         '''
-        info_dict = standard_sudoku.sub_points(self, info_dict)
+        info_dict = diagonal_sudoku.sub_points(self, info_dict)
         new_list = []
         for p in next_list:
-            info_dict = standard_sudoku.load_sdk_map(self, info_dict)
+            info_dict = diagonal_sudoku.load_sdk_map(self, info_dict)
             # print(p)
             info_dict['fixed_number'].update(p)
-            info_dict = standard_sudoku.sub_points(self, info_dict)
+            info_dict = diagonal_sudoku.sub_points(self, info_dict)
             # print(info_dict['shortest'])
             # print(info_dict['possibility'][info_dict['shortest']])
             # print(info_dict)
@@ -160,12 +163,12 @@ class standard_sudoku():
         return new_list
 
     def solve_sdk(self, info_dict):
-        info_dict = standard_sudoku.sub_points(self, info_dict)
+        info_dict = diagonal_sudoku.sub_points(self, info_dict)
         next_list = []
         for n in info_dict['possibility'][info_dict['shortest']]:
             next_list.append({info_dict['shortest']: n})
         while info_dict['possibility'] != {}:
-            next_list = standard_sudoku.next_number(self, info_dict, next_list)
+            next_list = diagonal_sudoku.next_number(self, info_dict, next_list)
             # print(next_list)
             # print(len(next_list))
         info_dict['final'] = {}
@@ -174,7 +177,20 @@ class standard_sudoku():
 
     def save_sdk_txt(self, info_dict, filename):
         '''
+        This is a function used to generate a .txt
+        file of the solution from the dictionary.
+        (Written by Xinru)
+
+        **Parameters**
+
+            info_dict: *dictionary*
+            filename: *string*
+
+        **Returns**
+
+            f: *.txt file*
         '''
+
         f = open(filename, 'w')
         map = info_dict['map']
         for (p_x, p_y) in info_dict['final']:
@@ -187,30 +203,59 @@ class standard_sudoku():
         return f
 
     def set_color(self, img, x0, y0, dim, gap, color):
+        '''
+        This is a function used to change the color of a certain block.
+        (Written by Xinru)
+
+        **Parameters**
+
+            img: *image*
+            x0: *integer*
+            y0: *integer*
+            dim: *integer*
+            gap: *integer*
+            color: *tuple*
+
+        '''
 
         for x in range(dim):
             for y in range(dim):
                 img.putpixel((dim * x0 + x + gap, dim * y0 + y + gap), color)
 
     def save_sdk_img(self, info_dict, filename):
+        '''
+        This is a function used to generate a .png
+        file of the solution from the dictionary.
+        (Written by Xinru)
+
+        **Parameters**
+
+            info_dict: *dictionary*
+            filename: *string*
+
+        **Returns**
+
+            image: *.png file*
+        '''
+        # Put all the mumbers in the info_dict['map'].
         map = info_dict['map']
         for (p_x, p_y) in info_dict['final']:
             map[p_y][p_x] = info_dict['final'][(p_x, p_y)]
 
-        # Create a new image.
+        # Create a new image and set the size.
         w_blocks = len(map[0])
         h_blocks = len(map)
         size = (w_blocks * 50 + 40, h_blocks * 50 + 40)
 
         image = Image.new("RGB", size, color=(255, 255, 255))
-
+        # Change the color of different groups.
         for n in info_dict['groups']:
             if n != 'diagonal1' and n != 'diagonal2':
                 color = tuple(np.random.choice(range(200, 256), size=3))
                 for x, y in info_dict['groups'][n]:
                     dim = 50
                     gap = 20
-                    standard_sudoku.set_color(
+                    diagonal_sudoku.set_color(
                         self, image, x, y, dim, gap, color
                     )
 
@@ -232,6 +277,7 @@ class standard_sudoku():
             line = ((x_i, y), (x_f, y))
             draw.line(line, 'black')
 
+        # Draw the diagonal.
         line2 = ((x_i, y_i), (x_f, y_f))
         line3 = ((x_f, y_i), (x_i, y_f))
         draw.line(line2, fill=128)
@@ -250,7 +296,7 @@ class standard_sudoku():
 
 
 if __name__ == "__main__":
-    a = standard_sudoku()
+    a = diagonal_sudoku()
     b = a.read_sdk("diagonal_hard_9_0.sdk")
     c = a.load_sdk_map(b)
     print(c)

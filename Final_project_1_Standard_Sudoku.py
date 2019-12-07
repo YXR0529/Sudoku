@@ -269,11 +269,81 @@ class standard_sudoku():
         info_dict['final'].update(next_list[0])
         return info_dict
 
+    def save_sdk_txt(self, info_dict, filename):
+        '''
+        '''
+        f = open(filename, 'w')
+        map = info_dict['map']
+        for (p_x, p_y) in info_dict['final']:
+            map[p_y][p_x] = info_dict['final'][(p_x, p_y)]
+        for y in range(len(map)):
+            for x in range(len(map[0])):
+                    f.write(str(map[y][x]) + ' ')
+            f.write('\n')
+        f.close()
+        return f
+
+    def set_color(self, img, x0, y0, dim, gap, color):
+
+        for x in range(dim):
+            for y in range(dim):
+                img.putpixel((dim * x0 + x + gap, dim * y0 + y + gap), color)
+
+    def save_sdk_img(self, info_dict, filename):
+        map = info_dict['map']
+        for (p_x, p_y) in info_dict['final']:
+            map[p_y][p_x] = info_dict['final'][(p_x, p_y)]
+
+        # Create a new image.
+        w_blocks = len(map[0])
+        h_blocks = len(map)
+        size = (w_blocks * 50 + 40, h_blocks * 50 + 40)
+
+        image = Image.new("RGB", size, color=(255, 255, 255))
+
+        for n in info_dict['groups']:
+            color = tuple(np.random.choice(range(200, 256), size=3))
+            for x, y in info_dict['groups'][n]:
+                dim = 50
+                gap = 20
+                standard_sudoku.set_color(self, image, x, y, dim, gap, color)
+
+        # Draw the grid.
+        draw = ImageDraw.Draw(image)
+        y_i = 20
+        y_f = image.height - 20
+        step_size_x = int((image.width - 40) / len(map[0]))
+        step_size_y = int((image.height - 40) / len(map))
+
+        for x in range(20, image.width, step_size_x):
+            line = ((x, y_i), (x, y_f))
+            draw.line(line, 'black')
+
+        x_i = 20
+        x_f = image.width - 20
+
+        for y in range(20, image.height, step_size_y):
+            line = ((x_i, y), (x_f, y))
+            draw.line(line, fill=128)
+
+        # Draw the numbers.
+        font = ImageFont.truetype('/Library/Fonts/Arial.ttf', 15)
+        for y, lst in enumerate(map):
+            for x, i, in enumerate(map[y]):
+                w, h = draw.textsize(str(i))
+                draw.text(
+                    (20 + (50 - w) / 2 + x * 50, 20 + (50 - h) / 2 + y * 50),
+                    str(i), 'black', font=font
+                )
+        image.save(filename)
+
 
 if __name__ == "__main__":
     a = standard_sudoku()
-    b = a.read_sdk("standard_hard_world.sdk")
+    b = a.read_sdk("standard_hard_8_0.sdk")
     c = a.load_sdk_map(b)
+    print(c)
     d = a.sub_points(c)
     e = a.solve_sdk(c)
-    print(e)
+    a.save_sdk_txt(e, "standart_hard_8_0.txt")
+    a.save_sdk_img(e, "standart_hard_8_0.png")

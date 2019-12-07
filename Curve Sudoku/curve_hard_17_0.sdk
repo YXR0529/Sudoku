@@ -1,0 +1,27 @@
+TYPE: CURVE_SUDOKU
+
+NUMBER_START
+
+500000000
+012000080
+000000000
+003007040
+900000003
+070600500
+000000000
+020000970
+000000006
+
+NUMBER_END
+
+MAP_START
+
+aaaaabbcc
+addaabbcc
+addbbbccc
+dddeebbcc
+ddeeeeeff
+gghheefff
+ggghhhffi
+gghhiiffi
+gghhiiiii

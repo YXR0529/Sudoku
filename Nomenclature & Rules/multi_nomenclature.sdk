@@ -1,0 +1,75 @@
+-------------------------------------------------------------------------------
+- Rules:
+Each puzzle consists of multi 9*9 grids containing given clues in various places. 
+The object is to fill all empty squares so that the numbers 1 to 9 appear exactly once in each row, column, 3*3 box.
+
+- Nomenclature
+In the original file of the puzzle (as the image below), we include the type, given numbers and different boxes.
+
+
+NUMBERS:
+We use 0 to represent for the blank position and empty positions
+
+MAP:
+
+In this case, you must use strict rules to mark different positions.
+Each sub blocks must be named by same letter + different numbers
+Each crossed blocks must be named by two letters corresponded to the sub maps
+Empty spaces must be marked as 'oo'
+
+
+-------------------------------------------------------------------------------
+
+TYPE: MULTI_SUDOKU
+
+NUMBER_START
+000008500000000006900
+000017020000000054030
+000206040000000201080
+059000800000093000100
+760000059000840000026
+004000170000006000750
+030602000002000105000
+040190000013000360000
+006400000508000700000
+000000093000400000000
+000000270000095000000
+000000001000320000000
+000008000209000007600
+000041000470000023070
+000302000300000806090
+046000900000038000100
+730000016000720000054
+005000240000001000730
+090703000000070208000
+060250000000090160000
+002100000000004900000
+NUMBER_END
+
+MAP_START
+
+a1 a1 a1 a2 a2 a2 a3 a3 a3 oo oo oo b1 b1 b1 b2 b2 b2 b3 b3 b3
+a1 a1 a1 a2 a2 a2 a3 a3 a3 oo oo oo b1 b1 b1 b2 b2 b2 b3 b3 b3
+a1 a1 a1 a2 a2 a2 a3 a3 a3 oo oo oo b1 b1 b1 b2 b2 b2 b3 b3 b3
+a4 a4 a4 a5 a5 a5 a6 a6 a6 oo oo oo b4 b4 b4 b5 b5 b5 b6 b6 b6
+a4 a4 a4 a5 a5 a5 a6 a6 a6 oo oo oo b4 b4 b4 b5 b5 b5 b6 b6 b6
+a4 a4 a4 a5 a5 a5 a6 a6 a6 oo oo oo b4 b4 b4 b5 b5 b5 b6 b6 b6
+a7 a7 a7 a8 a8 a8 ac ac ac c1 c1 c1 bc bc bc b7 b7 b7 b8 b8 b8
+a7 a7 a7 a8 a8 a8 ac ac ac c1 c1 c1 bc bc bc b7 b7 b7 b8 b8 b8
+a7 a7 a7 a8 a8 a8 ac ac ac c1 c1 c1 bc bc bc b7 b7 b7 b8 b8 b8
+oo oo oo oo oo oo c2 c2 c2 c3 c3 c3 c4 c4 c4 oo oo oo oo oo oo
+oo oo oo oo oo oo c2 c2 c2 c3 c3 c3 c4 c4 c4 oo oo oo oo oo oo
+oo oo oo oo oo oo c2 c2 c2 c3 c3 c3 c4 c4 c4 oo oo oo oo oo oo
+d1 d1 d1 d2 d2 d2 cd cd cd c5 c5 c5 ce ce ce e1 e1 e1 e2 e2 e2
+d1 d1 d1 d2 d2 d2 cd cd cd c5 c5 c5 ce ce ce e1 e1 e1 e2 e2 e2
+d1 d1 d1 d2 d2 d2 cd cd cd c5 c5 c5 ce ce ce e1 e1 e1 e2 e2 e2
+d3 d3 d3 d4 d4 d4 d5 d5 d5 oo oo oo e3 e3 e3 e4 e4 e4 e5 e5 e5
+d3 d3 d3 d4 d4 d4 d5 d5 d5 oo oo oo e3 e3 e3 e4 e4 e4 e5 e5 e5
+d3 d3 d3 d4 d4 d4 d5 d5 d5 oo oo oo e3 e3 e3 e4 e4 e4 e5 e5 e5
+d6 d6 d6 d7 d7 d7 d8 d8 d8 oo oo oo e6 e6 e6 e7 e7 e7 e8 e8 e8
+d6 d6 d6 d7 d7 d7 d8 d8 d8 oo oo oo e6 e6 e6 e7 e7 e7 e8 e8 e8
+d6 d6 d6 d7 d7 d7 d8 d8 d8 oo oo oo e6 e6 e6 e7 e7 e7 e8 e8 e8
+
+MAP_END
+
+

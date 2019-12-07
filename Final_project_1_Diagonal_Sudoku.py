@@ -1,4 +1,56 @@
 '''
+Project: Sudoku
+Authors: Xinru Yun, Tianjun Tang(Don)
+
+Course: Software Carpentry
+Johns Hopkins University
+
+
+This is our Final Project of Software Carpentry,
+in which we decided to apply BFS (Breadth First Search)
+method to solve various kinds of sudoku games.
+
+Our data source is Conceptis, which is a series of games
+that can be downloaded from Appstore, and contains six kinds
+of Sudoku to play with, that are, standard, curve, diagonal,
+odd/even, multi and killer sudoku.
+
+Based on standard sudoku rules, they added different extra rules
+like, in odd/even, some places can only be odd or even numbers, or,
+in killer sudoku, blocks have been devided into even smaller groups
+while requiring their sum to be a given number.
+
+Generally, to solve a sudoku, you need a .sdk file, which
+basically looks like following:
+
+TYPE: STANDARD_SUDOKU # indicates type of sudoku
+
+NUMBER_START # shows the numbers on the map, 0 if it's blank
+502090100
+000100080
+300006002
+040000700
+600000001
+005000090
+900700004
+060003000
+007020503
+NUMBER_END
+
+MAP_START # shows how numbers are divided into different groups
+a a a b b b c c c # in each group numbers should all be different
+a a a b b b c c c
+a a a b b b c c c
+d d d e e e f f f
+d d d e e e f f f
+d d d e e e f f f
+g g g h h h i i i
+g g g h h h i i i
+g g g h h h i i i
+MAP_END
+
+Further nomenclatures can be found in our repository under main folder.
+
 '''
 import functools
 import numpy as np
@@ -96,6 +148,7 @@ class diagonal_sudoku():
 
     def sub_points(self, info_dict):
         '''
+        same as standard.
         '''
         info_dict['fixed_number'].update(info_dict['original_numbers'])
         for fp in info_dict['fixed_number']:
@@ -138,6 +191,7 @@ class diagonal_sudoku():
 
     def next_number(self, info_dict, next_list):
         '''
+        same as standard.
         '''
         info_dict = diagonal_sudoku.sub_points(self, info_dict)
         new_list = []
@@ -163,6 +217,9 @@ class diagonal_sudoku():
         return new_list
 
     def solve_sdk(self, info_dict):
+        '''
+        same as standard.
+        '''
         info_dict = diagonal_sudoku.sub_points(self, info_dict)
         next_list = []
         for n in info_dict['possibility'][info_dict['shortest']]:
@@ -299,7 +356,6 @@ if __name__ == "__main__":
     a = diagonal_sudoku()
     b = a.read_sdk("diagonal_hard_9_0.sdk")
     c = a.load_sdk_map(b)
-    print(c)
     d = a.sub_points(c)
     e = a.solve_sdk(c)
     print(e)

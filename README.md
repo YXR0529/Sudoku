@@ -12,6 +12,8 @@ Types:
 - multi
 - killer
 
+Images of different kinds of sudoku are in folder image
+
 
 In order to use the python file to solve the game, you need:
 - Download the python file relating to a certain kind of sudoku and the original .sdk file.

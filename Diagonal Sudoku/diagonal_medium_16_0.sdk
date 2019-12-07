@@ -1,0 +1,23 @@
+TYPE: DIAGONAL_SUDOKU
+
+NUMBER_START
+
+000060
+000400
+010020
+040030
+001000
+020000
+
+NUMBER_END
+
+MAP_START
+
+aaabbb
+aaabbb
+cccddd
+cccddd
+eeefff
+eeefff
+
+MAP_END

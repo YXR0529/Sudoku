@@ -1,0 +1,55 @@
+TYPE: KILLER_SUDOKU
+
+NUMBER_START
+
+000000000
+000000000
+000000000
+000000000
+000000000
+000000000
+000000000
+000000000
+000000000
+
+NUMBER_END
+
+MAP_START
+
+a1  a2  a2  a3  a3  a3  a3  a4  a4
+a1  a1  a2  a5  a5  a3  a6  a6  a4
+a7  a7  a8  a5  a5  a5  a6  a4  a4
+a9  a8  a8  a10 a11 a11 a6  a12 a12
+a9  a9  a9  a10 a11 a13 a14 a14 a14
+a15 a15 a16 a11 a11 a13 a17 a17 a14
+a18 a18 a16 a19 a19 a19 a17 a20 a20
+a18 a16 a16 a21 a19 a19 a22 a23 a23
+a18 a18 a21 a21 a21 a21 a22 a22 a23
+
+MAP_END
+
+KILLER_START
+a1: 12
+a2: 17
+a3: 27
+a4: 23
+a5: 24
+a6: 24
+a7: 9
+a8: 15
+a9: 23
+a10:3
+a11:30
+a12:11
+a13:12
+a14:22
+a15:10
+a16:19
+a17:9
+a18:25
+a19:19
+a20:8
+a21:31
+a22:8
+a23:24
+KILLER_END

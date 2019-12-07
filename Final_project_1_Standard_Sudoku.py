@@ -53,6 +53,8 @@ Further nomenclatures can be found in our repository under main folder.
 
 '''
 import functools
+import numpy as np
+from PIL import Image, ImageDraw
 
 
 class standard_sudoku():
@@ -70,6 +72,7 @@ class standard_sudoku():
             file: *dictionary*
         '''
         f = open(filename, "r")
+        # Create a dictionary to include all the information from .sdk file.
         file = {}
         number = []
         map = []
@@ -95,7 +98,7 @@ class standard_sudoku():
             if line.strip() == "MAP_START":
                 break
         for line in f:
-            # Skip the line after "GRID STOP"
+            # Skip the line after "MAP_END"
             if line.strip() == "MAP_END":
                 break
             # Generate a list of lists with information of the map.
@@ -105,6 +108,8 @@ class standard_sudoku():
                     if y != " ":
                         lst.append(y)
                 map.append(lst)
+        # Create a dictionary about the 3*3 boxes
+        # and posion of points in different boxes.
         file['groups'] = {}
         for y, row in enumerate(map):
             for x, z in enumerate(row):
@@ -271,7 +276,20 @@ class standard_sudoku():
 
     def save_sdk_txt(self, info_dict, filename):
         '''
+        This is a function used to generate a .txt
+        file of the solution from the dictionary.
+        (Written by Xinru)
+
+        **Parameters**
+
+            info_dict: *dictionary*
+            filename: *string*
+
+        **Returns**
+
+            f: *.txt file*
         '''
+
         f = open(filename, 'w')
         map = info_dict['map']
         for (p_x, p_y) in info_dict['final']:
@@ -284,23 +302,54 @@ class standard_sudoku():
         return f
 
     def set_color(self, img, x0, y0, dim, gap, color):
+        '''
+        This is a function used to change the color of a certain block.
+        (Written by Xinru)
+
+        **Parameters**
+
+            img: *image*
+            x0: *integer*
+            y0: *integer*
+            dim: *integer*
+            gap: *integer*
+            color: *tuple*
+
+        '''
 
         for x in range(dim):
             for y in range(dim):
                 img.putpixel((dim * x0 + x + gap, dim * y0 + y + gap), color)
 
     def save_sdk_img(self, info_dict, filename):
+        '''
+        This is a function used to generate a .png
+        file of the solution from the dictionary.
+        (Written by Xinru)
+
+        **Parameters**
+
+            info_dict: *dictionary*
+            filename: *string*
+
+        **Returns**
+
+            image: *.png file*
+        '''
+
+        # Put all the mumbers in the info_dict['map']
         map = info_dict['map']
         for (p_x, p_y) in info_dict['final']:
             map[p_y][p_x] = info_dict['final'][(p_x, p_y)]
 
-        # Create a new image.
+        # Create a new image. and set the size.
         w_blocks = len(map[0])
         h_blocks = len(map)
         size = (w_blocks * 50 + 40, h_blocks * 50 + 40)
 
         image = Image.new("RGB", size, color=(255, 255, 255))
 
+        # Change the color of different groups.
         for n in info_dict['groups']:
             color = tuple(np.random.choice(range(200, 256), size=3))
             for x, y in info_dict['groups'][n]:
@@ -327,13 +376,12 @@ class standard_sudoku():
             draw.line(line, fill=128)
 
         # Draw the numbers.
-        font = ImageFont.truetype('/Library/Fonts/Arial.ttf', 15)
         for y, lst in enumerate(map):
             for x, i, in enumerate(map[y]):
                 w, h = draw.textsize(str(i))
                 draw.text(
                     (20 + (50 - w) / 2 + x * 50, 20 + (50 - h) / 2 + y * 50),
-                    str(i), 'black', font=font
+                    str(i), 'black'
                 )
         image.save(filename)
 

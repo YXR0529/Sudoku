@@ -1,0 +1,23 @@
+TYPE: DIAGONAL_SUDOKU
+
+NUMBER_START
+
+000000
+005300
+000036
+450000
+001600
+000000
+
+NUMBER_END
+
+MAP_START
+
+aaabbb
+aaabbb
+cccddd
+cccddd
+eeefff
+eeefff
+
+MAP_END

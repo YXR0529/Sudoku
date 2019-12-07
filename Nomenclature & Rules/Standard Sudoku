@@ -4,3 +4,12 @@ The object is to fill all empty squares so that the numbers 1 to 9 appear exactl
 
 - Nomenclature
 In the original file of the puzzle (as the image below), we include the type, given numbers and different boxes.
+
+![Image text](https://github.com/YXR0529/Sudoku/blob/master/Image/%20Standard%20Sudoku.png)
+![Image text](https://github.com/YXR0529/Sudoku/blob/master/Image/standard_sudoku.jpg)
+
+NUMBERS:
+We use 0 to represent for the blank position.
+
+MAP:
+We use a,b,c... to name different 3*3 boxes.

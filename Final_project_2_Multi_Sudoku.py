@@ -1,6 +1,8 @@
 '''
 '''
 import functools
+import numpy as np
+from PIL import Image, ImageDraw
 
 
 class multi_sudoku():
@@ -186,11 +188,84 @@ class multi_sudoku():
                 # print(info_dict)
                 break
             # print(next_list)
-            print(len(next_list))
-        return next_list
+            # print(len(next_list))
+        info_dict['final'] = {}
+        info_dict['final'].update(next_list[0])
+        return info_dict
 
-    def show_solution(self):
-        pass
+    def save_sdk_txt(self, info_dict, filename):
+        f = open(filename, 'w')
+        map = info_dict['original_map']
+        for (p_x, p_y) in info_dict['final']:
+            map[p_y][p_x] = info_dict['final'][(p_x, p_y)]
+        for y in range(len(map)):
+            for x in range(len(map[0])):
+                print(map[y][x])
+                if map[y][x] == 0:
+                    f.write('  ')
+                else:
+                    f.write(str(map[y][x]) + ' ')
+            f.write('\n')
+        f.close()
+        return f
+
+    def set_color(self, img, x0, y0, dim, gap, color):
+
+        for x in range(dim):
+            for y in range(dim):
+                img.putpixel((dim * x0 + x + gap, dim * y0 + y + gap), color)
+
+    def save_sdk_img(self, info_dict, filename):
+        map = info_dict['original_map']
+        for (p_x, p_y) in info_dict['final']:
+            map[p_y][p_x] = info_dict['final'][(p_x, p_y)]
+
+        # Create a new image.
+        w_blocks = len(map[0])
+        h_blocks = len(map)
+        size = (w_blocks * 50 + 40, h_blocks * 50 + 40)
+
+        image = Image.new("RGB", size, color=(255, 255, 255))
+
+        for n in info_dict['groups']:
+            color = tuple(np.random.choice(range(200, 256), size=3))
+            for n2 in info_dict['groups'][n]:
+                for x, y in info_dict['groups'][n][n2]:
+                    dim = 50
+                    gap = 20
+                    multi_sudoku.set_color(
+                        self, image, x, y, dim, gap, color
+                    )
+
+        # Draw the grid.
+        draw = ImageDraw.Draw(image)
+        y_i = 20
+        y_f = image.height - 20
+        step_size_x = int((image.width - 40) / len(map[0]))
+        step_size_y = int((image.height - 40) / len(map))
+
+        for x in range(20, image.width, step_size_x):
+            line = ((x, y_i), (x, y_f))
+            draw.line(line, 'black')
+
+        x_i = 20
+        x_f = image.width - 20
+
+        for y in range(20, image.height, step_size_y):
+            line = ((x_i, y), (x_f, y))
+            draw.line(line, 'black')
+
+        # Draw the numbers.
+        for y, lst in enumerate(map):
+            for x, i, in enumerate(map[y]):
+                if i != 0:
+                    w, h = draw.textsize(str(i))
+                    draw.text(
+                        (20 + (50 - w) / 2 + x * 50,
+                            20 + (50 - h) / 2 + y * 50),
+                        str(i), 'black'
+                    )
+        image.save(filename)
 
 
 if __name__ == "__main__":
@@ -202,3 +277,5 @@ if __name__ == "__main__":
     # print(d)
     e = a.solve_sdk(c)
     print(e)
+    a.save_sdk_txt(e, "multi_hard_23_0.txt")
+    a.save_sdk_img(e, "multi_hard_23_0.png")

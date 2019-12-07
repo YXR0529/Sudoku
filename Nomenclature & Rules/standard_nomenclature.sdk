@@ -1,0 +1,48 @@
+-------------------------------------------------------------------------------
+- Rules:
+Each puzzle consists of a 9*9 grid containing given clues in various places. 
+The object is to fill all empty squares so that the numbers 1 to 9 appear exactly once in each row, column, 3*3 box.
+
+- Nomenclature
+In the original file of the puzzle (as the image below), we include the type, given numbers and different boxes.
+
+![Image text](https://github.com/YXR0529/Sudoku/blob/master/Image/%20Standard%20Sudoku.png)
+![Image text](https://github.com/YXR0529/Sudoku/blob/master/Image/standard_sudoku.jpg)
+
+NUMBERS:
+We use 0 to represent for the blank position.
+
+MAP:
+We use a,b,c... to name different 3*3 boxes.
+-------------------------------------------------------------------------------
+
+TYPE: STANDARD_SUDOKU
+
+NUMBER_START
+
+502090100
+000100080
+300006002
+040000700
+600000001
+005000090
+900700004
+060003000
+007020503
+NUMBER_END
+
+MAP_START
+
+a a a b b b c c c
+a a a b b b c c c
+a a a b b b c c c
+d d d e e e f f f
+d d d e e e f f f
+d d d e e e f f f
+g g g h h h i i i
+g g g h h h i i i
+g g g h h h i i i
+
+MAP_END
+
+

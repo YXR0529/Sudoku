@@ -1,0 +1,6 @@
+- Rules:
+Each puzzle consists of a 9*9 grid containing given clues in various places. 
+The object is to fill all empty squares so that the numbers 1 to 9 appear exactly once in each row, column, 3*3 box.
+
+- Nomenclature
+In the original file of the puzzle (as the image below), we include the type, given numbers and different boxes.

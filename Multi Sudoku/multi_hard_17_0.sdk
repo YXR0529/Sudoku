@@ -1,0 +1,53 @@
+TYPE: MULTI_SUDOKU
+
+NUMBER_START
+
+002000800000000000000
+000405000000000000000
+100302009000000000000
+079040610000000000000
+000780800000000000000
+086020350000000000000
+600801000000001000000
+000904000304000000000
+003000000000400000000
+000000030109050000000
+000000000000000000000
+000000070603090000000
+000000002000000000100
+000000000907000307000
+000000600000000604005
+000000000000079040850
+000000000000000209000
+000000000000041080360
+000000000000700903001
+000000000000000402000
+000000000000006000900
+
+NUMBER_END
+
+MAP_START
+
+a1 a1 a1 a2 a2 a2 a3 a3 a3 oo oo oo oo oo oo oo oo oo oo oo oo
+a1 a1 a1 a2 a2 a2 a3 a3 a3 oo oo oo oo oo oo oo oo oo oo oo oo
+a1 a1 a1 a2 a2 a2 a3 a3 a3 oo oo oo oo oo oo oo oo oo oo oo oo
+a4 a4 a4 a5 a5 a5 a6 a6 a6 oo oo oo oo oo oo oo oo oo oo oo oo
+a4 a4 a4 a5 a5 a5 a6 a6 a6 oo oo oo oo oo oo oo oo oo oo oo oo
+a4 a4 a4 a5 a5 a5 a6 a6 a6 oo oo oo oo oo oo oo oo oo oo oo oo
+a7 a7 a7 a8 a8 a8 ab ab ab b1 b1 b1 b2 b2 b2 oo oo oo oo oo oo
+a7 a7 a7 a8 a8 a8 ab ab ab b1 b1 b1 b2 b2 b2 oo oo oo oo oo oo
+a7 a7 a7 a8 a8 a8 ab ab ab b1 b1 b1 b2 b2 b2 oo oo oo oo oo oo
+oo oo oo oo oo oo b3 b3 b3 b4 b4 b4 b5 b5 b5 oo oo oo oo oo oo
+oo oo oo oo oo oo b3 b3 b3 b4 b4 b4 b5 b5 b5 oo oo oo oo oo oo
+oo oo oo oo oo oo b3 b3 b3 b4 b4 b4 b5 b5 b5 oo oo oo oo oo oo
+oo oo oo oo oo oo b6 b6 b6 b7 b7 b7 bc bc bc c1 c1 c1 c2 c2 c2
+oo oo oo oo oo oo b6 b6 b6 b7 b7 b7 bc bc bc c1 c1 c1 c2 c2 c2
+oo oo oo oo oo oo b6 b6 b6 b7 b7 b7 bc bc bc c1 c1 c1 c2 c2 c2
+oo oo oo oo oo oo oo oo oo oo oo oo c3 c3 c3 c4 c4 c4 c5 c5 c5
+oo oo oo oo oo oo oo oo oo oo oo oo c3 c3 c3 c4 c4 c4 c5 c5 c5
+oo oo oo oo oo oo oo oo oo oo oo oo c3 c3 c3 c4 c4 c4 c5 c5 c5
+oo oo oo oo oo oo oo oo oo oo oo oo c6 c6 c6 c7 c7 c7 c8 c8 c8
+oo oo oo oo oo oo oo oo oo oo oo oo c6 c6 c6 c7 c7 c7 c8 c8 C8
+oo oo oo oo oo oo oo oo oo oo oo oo c6 c6 c6 c7 c7 c7 c8 c8 c8
+
+MAP_END
